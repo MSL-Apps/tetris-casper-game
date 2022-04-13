@@ -28,8 +28,6 @@ import PublishButton from './PublishButton';
 
 const Tetris = () => {
 
-  var deployInterval = null
-
   const [dropTime, setDropTime] = useState(null);
   const [gameInit, setGameInit] = useState(true);
   const [gameOver, setGameOver] = useState(false);
@@ -52,18 +50,7 @@ const Tetris = () => {
   };
 
   function logout() {
-    setDropTime(null);
-    setGameInit(true);
-    setGameOver(false);
-    setGamePaused(false);
-    setIsError(false);
-    setIsBetterResult(false);
-    setIsPublishedResult(true);
-    setIsPublishingResult(false);
-    setBoard(createBoard());
-    setScore(0);
-    setLevel(0);
-    setRows(0);
+    window.location.reload(false);
   }
 
   const startGameActivity = () => {
@@ -91,7 +78,7 @@ const Tetris = () => {
     if (!checkCollision(player, board, { x: 0, y: 1 })) {
       updatePlayerPos({ x: 0, y: 1, collided: false });
     } else {
-      if (player.pos.y < 1) {
+      if (player.pos.y < 3) {
         setGameOver(true);
         if (score > bestScore) {
           setIsBetterResult(true);
@@ -110,7 +97,7 @@ const Tetris = () => {
   
   fetchScores();
   useInterval(() => { drop(); }, dropTime);
-  deployInterval = useInterval(() => { fetchScores(); }, 10000);
+  useInterval(() => { fetchScores(); }, 10000);
 
   const move = ({ keyCode }) => {
     if (!gameOver) {

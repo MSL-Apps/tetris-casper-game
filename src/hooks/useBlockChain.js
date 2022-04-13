@@ -27,9 +27,6 @@ export const useBlockChain = (level, rows, score, logout, isError, setIsError, i
     getActiveKey()
   });
   window.addEventListener("signer:activeKeyChanged", (msg) => { 
-    setPlayerName('');
-    setBalance(0);
-    setBestScore(0)
     logout();
   });
 
