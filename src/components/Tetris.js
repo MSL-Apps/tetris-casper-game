@@ -25,10 +25,9 @@ import LoginButton from './LoginButton';
 import StartButton from './StartButton';
 import PublishButton from './PublishButton';
 
+var fetchScoresInterval = null
 
 const Tetris = () => {
-
-  var fetchScoresInterval = null
 
   const [dropTime, setDropTime] = useState(null);
   const [gameInit, setGameInit] = useState(true);
@@ -97,10 +96,12 @@ const Tetris = () => {
     }
   };
   
-  fetchScores();
   useInterval(() => { drop(); }, dropTime);
-  clearInterval(fetchScoresInterval);
-  fetchScoresInterval = useInterval(() => { fetchScores(); }, 10000);
+
+  React.useEffect(() => {
+    fetchScores();
+    fetchScoresInterval = setInterval(() => fetchScores(), 10000);
+  },[]);
 
   const move = ({ keyCode }) => {
     if (!gameOver) {
