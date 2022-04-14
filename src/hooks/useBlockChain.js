@@ -73,8 +73,8 @@ export const useBlockChain = (level, rows, score, logout, isError, setIsError, i
         setBestScore(0);
         const result = await casperService.getBlockState(
           stateRootHash,
-          'account-hash-ad15b0ac431f0ba4bd9ee8461bb17fd0fe4327c0208094bd65b258702c98dbd6',
-          ['contract']
+          'account-hash-4740c2eedd3711705dbfb46f831f226ad7384dd303ffa452e08a5c8146128bf1',
+          ['tetris-casper']
         );
         var obj = JSON.parse(JSON.stringify(result));
             
@@ -82,8 +82,8 @@ export const useBlockChain = (level, rows, score, logout, isError, setIsError, i
           if (obj.Contract.namedKeys[i].name == activeKey) {
             const scoresData = await casperService.getBlockState(
               stateRootHash,
-              'account-hash-ad15b0ac431f0ba4bd9ee8461bb17fd0fe4327c0208094bd65b258702c98dbd6',
-              ['contract',obj.Contract.namedKeys[i].name]
+              'account-hash-4740c2eedd3711705dbfb46f831f226ad7384dd303ffa452e08a5c8146128bf1',
+              ['tetris-casper',obj.Contract.namedKeys[i].name]
             );
             setBestScore(parseInt((JSON.parse(JSON.stringify(scoresData)).CLValue.data).split(';')[2]));
           }
@@ -135,7 +135,7 @@ export const useBlockChain = (level, rows, score, logout, isError, setIsError, i
     setIsPublishingResult(true);
 
     try {
-      const contractHash = decodeBase16('fc79928764659799f1f395ace799fad3b55c142bc18dd1a9e9946d4c5aa25aa0');
+      const contractHash = decodeBase16('5b75a04325b499efce5090e6ae27564a9cc3b8af2874a32ff64e657595d29fd0');
       const deployParams = new DeployUtil.DeployParams(CLPublicKey.fromHex(activeKey), 'casper-test');
 
       const args = RuntimeArgs.fromMap({

@@ -19,7 +19,7 @@ const StyledMsgPublishingResult = styled.div`
 `;
 
 const MsgPublishingResult = () => (
-  <StyledMsgPublishingResult id="msgPublishingResult">Publishing result on block-chain.<br/>It usually takes about few minutes.<br/><br/>Please wait...</StyledMsgPublishingResult>
+  <StyledMsgPublishingResult id="msgPublishingResult">Publishing result on block-chain.<br/>It usually takes a few minutes.<br/><br/>Please wait...</StyledMsgPublishingResult>
 );
 
 export default MsgPublishingResult;

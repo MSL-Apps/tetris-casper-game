@@ -58,7 +58,7 @@ const Tetris = () => {
     setDropTime(1000);
     resetPlayer();
     setScore(0);
-    setLevel(0);
+    setLevel(1);
     setRows(0);
     setGameInit(false);
     setGameOver(false);
@@ -71,9 +71,9 @@ const Tetris = () => {
 
   const drop = () => {
     document.getElementById('main').focus();
-    if (rows > (level + 1) * 10) {
+    if (rows > (level) * 10) {
       setLevel(prev => prev + 1);
-      setDropTime(1000 / (level + 1) + 200);
+      setDropTime(1000 / (level) + 200);
     }
     if (!checkCollision(player, board, { x: 0, y: 1 })) {
       updatePlayerPos({ x: 0, y: 1, collided: false });
@@ -89,7 +89,7 @@ const Tetris = () => {
         }
         setDropTime(null);
       } else {
-        setDropTime(1000 / (level + 1));
+        setDropTime(1000 / (level));
       }
       updatePlayerPos({ x: 0, y: 0, collided: true });
     }
@@ -112,7 +112,7 @@ const Tetris = () => {
       } else if (keyCode === 32) {
         if (gamePaused) {
           setGamePaused(false);
-          setDropTime(1000 / (level + 1));
+          setDropTime(1000 / (level));
         } else {
           setGamePaused(true);
           setDropTime(null);

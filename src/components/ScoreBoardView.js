@@ -25,8 +25,8 @@ export async function fetchScores() {
     try {
       const result = await casperService.getBlockState(
         stateRootHash,
-        'account-hash-ad15b0ac431f0ba4bd9ee8461bb17fd0fe4327c0208094bd65b258702c98dbd6',
-        ['contract']
+        'account-hash-4740c2eedd3711705dbfb46f831f226ad7384dd303ffa452e08a5c8146128bf1',
+        ['tetris-casper']
       );
       var obj = JSON.parse(JSON.stringify(result));
       var scoreBoard = [];
@@ -35,8 +35,8 @@ export async function fetchScores() {
       for (let i = 0; i < obj.Contract.namedKeys.length; i++) {
         const scoresData = await casperService.getBlockState(
           stateRootHash,
-          'account-hash-ad15b0ac431f0ba4bd9ee8461bb17fd0fe4327c0208094bd65b258702c98dbd6',
-          ['contract',obj.Contract.namedKeys[i].name]
+          'account-hash-4740c2eedd3711705dbfb46f831f226ad7384dd303ffa452e08a5c8146128bf1',
+          ['tetris-casper',obj.Contract.namedKeys[i].name]
         );
 
         scoreBoard.push({
@@ -57,6 +57,7 @@ export async function fetchScores() {
         str = str + "<td style='width: 3vw; text-align: center'>" + scoreBoardSorted[i].rows + "</td>";
         str = str + "<td style='width: 3vw; text-align: center'>" + scoreBoardSorted[i].score + "</td>";
         str = str + "</tr>"
+        if (i===9) { break }
       }
       str = str + "</table>"
 
