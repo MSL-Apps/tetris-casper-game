@@ -28,6 +28,8 @@ import PublishButton from './PublishButton';
 
 const Tetris = () => {
 
+  var fetchScoresInterval = null
+
   const [dropTime, setDropTime] = useState(null);
   const [gameInit, setGameInit] = useState(true);
   const [gameOver, setGameOver] = useState(false);
@@ -97,7 +99,8 @@ const Tetris = () => {
   
   fetchScores();
   useInterval(() => { drop(); }, dropTime);
-  useInterval(() => { fetchScores(); }, 10000);
+  clearInterval(fetchScoresInterval);
+  fetchScoresInterval = useInterval(() => { fetchScores(); }, 10000);
 
   const move = ({ keyCode }) => {
     if (!gameOver) {

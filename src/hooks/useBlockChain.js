@@ -20,7 +20,7 @@ export const useBlockChain = (level, rows, score, logout, isError, setIsError, i
   var casperService = new CasperServiceByJsonRPC(casperNodeUrl);
   var activeKey = null;
   var deployHash = null;
-  var getDeployInterval = null;
+  var getDeployResultInterval = null;
  
   window.addEventListener("signer:locked", (msg) => { });
   window.addEventListener("signer:unlocked", (msg) => { 
@@ -99,7 +99,8 @@ export const useBlockChain = (level, rows, score, logout, isError, setIsError, i
   }
 
   function checkDeployStatus() {
-    getDeployInterval = setInterval(() => {
+    clearInterval(getDeployResultInterval);
+    getDeployResultInterval = setInterval(() => {
       getDeployResult();
     }, 5000);
   }
@@ -108,7 +109,7 @@ export const useBlockChain = (level, rows, score, logout, isError, setIsError, i
     try {
       const deployInfo = await casperService.getDeployInfo(deployHash);
       if (JSON.parse(JSON.stringify(deployInfo)).execution_results.length == 1) {
-        clearInterval(getDeployInterval);
+        clearInterval(getDeployResultInterval);
         if (JSON.parse(JSON.stringify(deployInfo)).execution_results[0].result.hasOwnProperty("Success")) {
           getAccountBalance()
           document.getElementById("msgPublishingResult").innerHTML = "Success!";
@@ -136,7 +137,7 @@ export const useBlockChain = (level, rows, score, logout, isError, setIsError, i
 
     try {
       const contractHash = decodeBase16('5b75a04325b499efce5090e6ae27564a9cc3b8af2874a32ff64e657595d29fd0');
-      const deployParams = new DeployUtil.DeployParams(CLPublicKey.fromHex(activeKey), 'casper-test');
+      const deployParams = new DeployUtil.DeployParams(CLPublicKey.fromHex(activeKey), network);
 
       const args = RuntimeArgs.fromMap({
         'account': new CLString(activeKey),

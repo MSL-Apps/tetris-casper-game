@@ -8,7 +8,7 @@ const StyledMsgError = styled.div`
   color: #ff0000ff;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 0.8vw;
-  background: #ffffff33;
+  background: #7c49ae99;
   border-radius: 0.6vw;
   margin-top: 5%;
   margin-left: 10%;
