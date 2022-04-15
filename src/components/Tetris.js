@@ -12,7 +12,7 @@ import { useBlockChain } from '../hooks/useBlockChain';
 import Board from './Board';
 import ProfileView from './ProfileView';
 import ResultView from './ResultView';
-import ScoreBoardView, { fetchScores } from './ScoreBoardView';
+import ScoreBoardView from './ScoreBoardView';
 import ControlView from './ControlView';
 
 import MsgLoginDisplay from './MsgLoginDisplay';
@@ -25,7 +25,6 @@ import LoginButton from './LoginButton';
 import StartButton from './StartButton';
 import PublishButton from './PublishButton';
 
-var fetchScoresInterval = null
 
 const Tetris = () => {
 
@@ -42,7 +41,7 @@ const Tetris = () => {
   const [board, setBoard, rowsCleared] = useBoard(player, resetPlayer);
   const [score, setScore, rows, setRows, level, setLevel] = useGameStatus(rowsCleared);
 
-  const [playerName, balance, network, bestScore, getActiveKey, publishResult] = useBlockChain(level, rows, score, logout, isError, setIsError, isPublishingResult, setIsPublishingResult, isPublishedResult, setIsPublishedResult);
+  const [playerName, balance, network, bestScore, fetchScores, getActiveKey, publishResult] = useBlockChain(level, rows, score, logout, isError, setIsError, isPublishingResult, setIsPublishingResult, isPublishedResult, setIsPublishedResult);
 
   const movePlayer = dir => {
     if (!checkCollision(player, board, { x: dir, y: 0 })) {
@@ -97,12 +96,7 @@ const Tetris = () => {
   };
   
   useInterval(() => { drop(); }, dropTime);
-
-  React.useEffect(() => {
-    fetchScores();
-    fetchScoresInterval = setInterval(() => fetchScores(), 10000);
-  },[]);
-
+  
   const move = ({ keyCode }) => {
     if (!gameOver) {
       if (keyCode === 37 && !gamePaused) {

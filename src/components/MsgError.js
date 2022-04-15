@@ -5,11 +5,12 @@ const StyledMsgError = styled.div`
   height: auto;
   width: 80%;
   text-align: center;
-  color: #ff0000ff;
+  color: #fd0e73ff;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 0.8vw;
-  background: #7c49ae99;
+  background: #ffffffdd;
   border-radius: 0.6vw;
+  border: 0.15vw solid #fd0e73dd;
   margin-top: 5%;
   margin-left: 10%;
   margin-right: 10%;
