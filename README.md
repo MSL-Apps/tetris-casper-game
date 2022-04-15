@@ -2,10 +2,10 @@
 
 ## Single Player Game built on Casper Blockchain
 - each player have to log into their casper account using Casper Signer
-- best results are saved on-chain
-- each player can see best results of the other players in score board updated periodicaly
-- project can be run on Testnet or Mainnet
-- live demo app is not avaible because Casper Signer needs to be whitelisted before, otherwise it works on localhost with CORS restrictions 
+- the best results are saved on-chain
+- each player can see the best scores of other players on the scoreboard updated periodically
+- the game project can be run in Testnet or Mainnet
+- Live Demo App is not available as Casper Signer must be whitelisted beforehand otherwise it runs on localhost with CORS restrictions
 
 ## Video demo
 
