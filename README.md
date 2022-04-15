@@ -1,7 +1,9 @@
-# Getting Started with Create React App
+# TETRIS
+
+Simple Single Player Game built on Casper Blockchain
 
 1. Before starting a new game, the user must log into his user account using Casper Signer installed in a web browser
-![15](<img src="https://github.com/MSL-Apps/tetris-casper-game/blob/564f030bae6e25d257c3c53a6af713ee719f7547/img/01.png" width="500"/>)
+<img src="https://github.com/MSL-Apps/tetris-casper-game/blob/564f030bae6e25d257c3c53a6af713ee719f7547/img/01.png" width="500"/>
 
 2. After logging in, the user's public key, account status and the best result are downloaded. Now you can start a new game
 <img src="https://github.com/MSL-Apps/tetris-casper-game/blob/564f030bae6e25d257c3c53a6af713ee719f7547/img/02.png" width="500"/>
