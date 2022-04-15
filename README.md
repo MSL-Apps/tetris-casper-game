@@ -1,7 +1,7 @@
 # Tetris Casper Game
 
 ## Single Player Game built on Casper Blockchain
-- each player have to log into their casper account using Casper Signer
+- each player must log into their casper account using Casper Signer
 - the best results are saved on-chain
 - each player can see the best scores of other players on the scoreboard updated periodically
 - the game project can be run in Testnet or Mainnet
