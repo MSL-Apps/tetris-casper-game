@@ -1,4 +1,4 @@
-# TETRIS
+# Tetris Casper Game
 
 ## Single Player Game built on Casper Blockchain
 - each player have to log into their casper account using Casper Signer
